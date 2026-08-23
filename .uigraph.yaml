@@ -1,9 +1,7 @@
 version: 1
-
 project:
   name: mytokens
   environment: local
-
 service:
   name: Mytokens Test
   category: service
@@ -13,7 +11,6 @@ service:
     url: https://github.com/OpenSayad/mytokens-test
   ownership:
     team: Architecture
-
 dependencies:
   - name: models-dev-catalog
     service: models.dev API
@@ -28,7 +25,6 @@ dependencies:
     type: database
     databaseName: opencode
     description: Reads assistant usage rows from the user's local OpenCode history database when present.
-
 architectureDiagrams:
   - name: System Context
     path: .uigraph/diagrams/system-context/system-context.mmd
@@ -42,13 +38,11 @@ architectureDiagrams:
   - name: Local and CI Deployment
     path: .uigraph/diagrams/deployment/deployment.mmd
     contextPath: .uigraph/diagrams/deployment/context.json
-
 databases:
   - name: opencode
     dialect: sqlite
     dbType: SQLite
     schemaPath: .uigraph/db/opencode.sql
-
 docs:
   - name: CLI Usage Reference
     path: .uigraph/docs/cli-usage.md

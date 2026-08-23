@@ -1,0 +1,13 @@
+flowchart TD
+  sourceFiles[Usage files and SQLite rows] --> readers[Twenty-one source adapters]
+  readers --> parse[Parse JSONL / JSON / CSV / SQLite]
+  parse --> normalize[Normalize model, provider, tokens, agent, project, date]
+  normalize --> range[Apply date range and include/exclude filters]
+  range --> catalog[Load models.dev catalog]
+  catalog --> cost[Resolve prices and model groups]
+  range --> cost
+  cost --> aggregate[Aggregate by day, source, model, provider, project, agent, token type]
+  aggregate --> terminal[Render selected terminal screen]
+  aggregate --> image[Render overview SVG or PNG]
+  cache[Parse and remote fetch caches] -.-> readers
+  cache -.-> catalog

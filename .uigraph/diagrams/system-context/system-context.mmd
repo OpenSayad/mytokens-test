@@ -1,0 +1,9 @@
+flowchart LR
+  user[CLI User] -->|invokes commands| cli[Mytokens CLI]
+  env[Environment variables\nHOME / USERPROFILE] -->|home-directory resolution| cli
+  opencode[(OpenCode SQLite\nopencode.db)] -->|read-only SQL| cli
+  files[Local usage files\nJSONL / JSON / CSV] -->|read and parse| cli
+  cli -->|HTTPS GET JSON| catalog[models.dev API]
+  cli -->|terminal tables / warnings| terminal[stdout / terminal]
+  cli -->|SVG or PNG bytes| report[User-selected report file]
+  cli -->|read/write JSON cache| cache[~/.mytokens/cache]

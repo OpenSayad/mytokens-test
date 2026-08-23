@@ -1,0 +1,17 @@
+{
+  "name": "Usage Data Flow",
+  "description": "Transformation from local usage records to terminal and image reports.",
+  "nodes": {
+    "sourceFiles": { "name": "Usage files and SQLite rows" },
+    "readers": { "name": "Twenty-one source adapters" },
+    "parse": { "name": "Parse JSONL / JSON / CSV / SQLite" },
+    "normalize": { "name": "Normalize usage messages" },
+    "range": { "name": "Date and usage filters" },
+    "catalog": { "name": "models.dev catalog" },
+    "cost": { "name": "Price and model-group enrichment" },
+    "aggregate": { "name": "Usage aggregation" },
+    "terminal": { "name": "Terminal screens" },
+    "image": { "name": "SVG or PNG report" },
+    "cache": { "name": "Parse and remote fetch caches" }
+  }
+}

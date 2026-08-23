@@ -1,0 +1,15 @@
+{
+  "name": "System Context",
+  "description": "External boundaries observed in the CLI implementation.",
+  "nodes": {
+    "user": { "name": "CLI User" },
+    "env": { "name": "HOME / USERPROFILE environment" },
+    "cli": { "name": "Mytokens CLI" },
+    "opencode": { "name": "OpenCode SQLite database" },
+    "files": { "name": "Local usage files" },
+    "catalog": { "name": "models.dev API" },
+    "terminal": { "name": "stdout / terminal" },
+    "report": { "name": "User-selected report file" },
+    "cache": { "name": "~/.mytokens/cache" }
+  }
+}

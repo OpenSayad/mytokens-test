@@ -1,0 +1,15 @@
+{
+  "name": "Local and CI Deployment",
+  "description": "Observed package publication and UiGraph workflows plus the local runtime boundary.",
+  "nodes": {
+    "developer": { "name": "Developer workstation" },
+    "package": { "name": "NPM package: mytokens" },
+    "runtime": { "name": "Local Node.js runtime" },
+    "local": { "name": "OpenCode and coding-CLI files" },
+    "models": { "name": "models.dev" },
+    "disk": { "name": "Local filesystem" },
+    "github": { "name": "GitHub repository" },
+    "ci": { "name": "GitHub Actions" },
+    "uigraph": { "name": "UiGraph Gateway" }
+  }
+}

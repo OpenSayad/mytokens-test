@@ -1,0 +1,16 @@
+{
+  "name": "Component Responsibilities",
+  "description": "Code-level responsibilities derived from src/index.ts, src/app.ts, parsers, and export modules.",
+  "nodes": {
+    "entry": { "name": "CLI entrypoint" },
+    "orchestration": { "name": "Application orchestration" },
+    "parsers": { "name": "Source parsers" },
+    "normalized": { "name": "Normalized usage messages" },
+    "filters": { "name": "Date and usage filters" },
+    "pricing": { "name": "Price and model-group enrichment" },
+    "screens": { "name": "Terminal renderers" },
+    "overview": { "name": "Overview aggregation" },
+    "export": { "name": "SVG / PNG export" },
+    "cachemgr": { "name": "File and fetch cache" }
+  }
+}

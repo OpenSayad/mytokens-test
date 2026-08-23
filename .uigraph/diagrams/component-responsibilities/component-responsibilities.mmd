@@ -1,0 +1,11 @@
+flowchart LR
+  entry[CLI entrypoint] --> orchestration[Application orchestration]
+  orchestration --> parsers[Source parsers]
+  parsers --> normalized[Normalized usage messages]
+  normalized --> filters[Date and usage filters]
+  filters --> pricing[Price and model-group enrichment]
+  pricing --> screens[Terminal renderers]
+  pricing --> overview[Overview aggregation]
+  overview --> export[SVG / PNG export]
+  cachemgr[File and fetch cache] --> parsers
+  cachemgr --> pricing

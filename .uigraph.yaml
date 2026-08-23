@@ -38,6 +38,9 @@ architectureDiagrams:
   - name: Local and CI Deployment
     path: .uigraph/diagrams/deployment/deployment.mmd
     contextPath: .uigraph/diagrams/deployment/context.json
+  - name: System Contextggggggggggggggggggggggggggggg
+    path: .uigraph/diagrams/system-contextggggggggggggggggggggggggggggg.mmd
+    contextPath: .uigraph/diagrams/system-contextggggggggggggggggggggggggggggg-context.json
 databases:
   - name: opencode
     dialect: sqlite

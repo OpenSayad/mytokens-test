@@ -1,0 +1,18 @@
+flowchart LR
+user["CLI User"]
+cli["Mytokens CLI"]
+env["HOME / USERPROFILE environment"]
+opencode["OpenCode SQLite database"]
+files["Local usage files"]
+catalog["models.dev API"]
+terminal["stdout / terminal"]
+report["User-selected report file"]
+cache["~/.mytokens/cache"]
+user --> cli
+env --> cli
+opencode --> cli
+files --> cli
+cli --> catalog
+cli --> terminal
+cli --> report
+cli --> cache

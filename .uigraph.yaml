@@ -1,0 +1,10 @@
+version: 1
+service:
+    name: Mytokens Test
+    category: service
+    description: Mytokens Test service
+    repository:
+        provider: github
+        url: https://github.com/OpenSayad/mytokens-test
+    ownership:
+        team: Architecture

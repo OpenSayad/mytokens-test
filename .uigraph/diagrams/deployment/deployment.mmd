@@ -1,9 +1,18 @@
 flowchart LR
-  developer[Developer workstation] -->|npx / npm install| package[NPM package: mytokens]
-  package -->|runs Node.js 18+ CLI| runtime[Local Node.js runtime]
-  runtime -->|reads user home data| local[OpenCode and coding-CLI files]
-  runtime -->|HTTPS| models[models.dev]
-  runtime -->|writes report and cache| disk[Local filesystem]
-  github[GitHub repository] -->|push to main| ci[GitHub Actions]
-  ci -->|pnpm install / build / npm publish| package
-  ci -->|UiGraph sync workflow| uigraph[UiGraph Gateway]
+developer["Developer workstation"]
+package["NPM package: mytokens"]
+runtime["Local Node.js runtime"]
+local["OpenCode and coding-CLI files"]
+models["models.dev"]
+disk["Local filesystem"]
+github["GitHub repository"]
+ci["GitHub Actions"]
+uigraph["UiGraph Gateway"]
+developer --> package
+package --> runtime
+runtime --> local
+runtime --> models
+runtime --> disk
+github --> ci
+ci --> package
+ci --> uigraph

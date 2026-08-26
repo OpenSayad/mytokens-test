@@ -1,57 +1,10 @@
 version: 1
-project:
-  name: mytokens
-  environment: local
 service:
-  name: Mytokens Test
-  category: service
-  description: CLI that reads local coding-assistant usage data, enriches models with pricing metadata, and renders token and cost reports.
-  repository:
-    provider: github
-    url: https://github.com/OpenSayad/mytokens-test
-  ownership:
-    team: Architecture
-dependencies:
-  - name: models-dev-catalog
-    service: models.dev API
-    direction: downstream
-    criticality: hard
-    type: http
-    description: Fetches the model catalog and pricing data used to calculate estimated costs.
-  - name: opencode-history-database
-    service: OpenCode SQLite Database
-    direction: downstream
-    criticality: soft
-    type: database
-    databaseName: opencode
-    description: Reads assistant usage rows from the user's local OpenCode history database when present.
-architectureDiagrams:
-  - name: System Context
-    path: .uigraph/diagrams/system-context/system-context.mmd
-    contextPath: .uigraph/diagrams/system-context/context.json
-  - name: Component Responsibilities
-    path: .uigraph/diagrams/component-responsibilities/component-responsibilities.mmd
-    contextPath: .uigraph/diagrams/component-responsibilities/context.json
-  - name: Usage Data Flow
-    path: .uigraph/diagrams/usage-data-flow/usage-data-flow.mmd
-    contextPath: .uigraph/diagrams/usage-data-flow/context.json
-  - name: Local and CI Deployment
-    path: .uigraph/diagrams/deployment/deployment.mmd
-    contextPath: .uigraph/diagrams/deployment/context.json
-  - name: System Contextggggggggggggggggggggggggggggg
-    path: .uigraph/diagrams/system-contextggggggggggggggggggggggggggggg.mmd
-    contextPath: .uigraph/diagrams/system-contextggggggggggggggggggggggggggggg-context.json
-databases:
-  - name: opencode
-    dialect: sqlite
-    dbType: SQLite
-    schemaPath: .uigraph/db/opencode.sql
-docs:
-  - name: CLI Usage Reference
-    path: .uigraph/docs/cli-usage.md
-    fileType: markdown
-    description: Commands, flags, inputs, outputs, and defaults implemented by the CLI.
-  - name: Architecture and Operations Notes
-    path: .uigraph/docs/architecture-and-operations.md
-    fileType: markdown
-    description: Runtime boundaries, local data sources, caching, network access, build, and test operations.
+    name: Mytokens Test
+    category: service
+    description: Mytokens Test service
+    repository:
+        provider: github
+        url: https://github.com/OpenSayad/mytokens-test
+    ownership:
+        team: Architecture

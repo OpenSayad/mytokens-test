@@ -1,0 +1,23 @@
+testCases:
+  - title: Default command selects the models-by-tokens screen
+    type: manual
+    order: 1
+    priority: p1
+    tags: [cli, defaults]
+    stepsList:
+      - action: Run `npx mytokens` with accessible local usage data and model metadata
+        expectedResult: The command renders the default models-by-tokens report.
+      - action: Inspect stdout
+        expectedResult: A token usage table is printed without an API server requirement.
+    expectedOutcome: The CLI starts and renders a report using its documented default screen.
+    isCritical: true
+
+  - title: Cache size command reports an empty cache safely
+    type: manual
+    order: 2
+    priority: p2
+    tags: [cli, cache]
+    stepsList:
+      - action: Run `mytokens cache size` before creating a parse cache
+        expectedResult: The command reports that no parse cache exists and exits normally.
+    expectedOutcome: Cache inspection does not require usage data or network access.

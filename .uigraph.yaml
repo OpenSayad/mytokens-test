@@ -1,10 +1,71 @@
 version: 1
 service:
-    name: Mytokens Test
-    category: service
-    description: Mytokens Test service
-    repository:
-        provider: github
-        url: https://github.com/OpenSayad/mytokens-test
-    ownership:
-        team: Architecture
+  name: Mytokens Test
+  category: service
+  description: Node.js CLI that reads local coding-assistant usage data, enriches it with models.dev pricing, and renders token and cost reports.
+  repository:
+    provider: github
+    url: https://github.com/OpenSayad/mytokens-test
+  ownership:
+    team: Architecture
+
+dependencies:
+  - name: models-dev-catalog
+    service: models.dev
+    direction: downstream
+    criticality: hard
+    type: http
+    description: Fetches model metadata and pricing over HTTPS for cost enrichment.
+  - name: opencode-database
+    service: OpenCode
+    direction: downstream
+    criticality: soft
+    type: database
+    description: Reads the user-owned OpenCode SQLite history; unavailable data is tolerated and legacy files are attempted.
+    databaseName: opencode
+
+databases:
+  - name: opencode
+    dialect: sqlite
+    dbType: SQLite
+    schemaPath: .uigraph/db/opencode.sql
+
+queries:
+  - name: opencode-assistant-usage
+    database: opencode
+    path: .uigraph/queries/opencode-assistant-usage.sql
+    description: Selects assistant messages with token data and optional workspace context.
+
+docs:
+  - name: CLI Usage Reference
+    path: .uigraph/docs/cli-usage.md
+    fileType: markdown
+    description: Implemented commands, options, defaults, inputs, and outputs.
+  - name: Architecture and Operations
+    path: .uigraph/docs/architecture-and-operations.md
+    fileType: markdown
+    description: Runtime boundaries, build, test, and release operations.
+
+testPacks:
+  - name: CLI Smoke Checks
+    type: smoke
+    environment: local
+    testCasesPath: .uigraph/tests/cli-smoke.yaml
+  - name: Parser and Reporting Regression Checks
+    type: regression
+    environment: local
+    testCasesPath: .uigraph/tests/parser-reporting-regression.yaml
+
+architectureDiagrams:
+  - name: System Context
+    path: .uigraph/diagrams/system-context/system-context.mmd
+    contextPath: .uigraph/diagrams/system-context/context.json
+  - name: Component Responsibilities
+    path: .uigraph/diagrams/component-responsibilities/component-responsibilities.mmd
+    contextPath: .uigraph/diagrams/component-responsibilities/context.json
+  - name: Usage Data Flow
+    path: .uigraph/diagrams/usage-data-flow/usage-data-flow.mmd
+    contextPath: .uigraph/diagrams/usage-data-flow/context.json
+  - name: Local and CI Deployment
+    path: .uigraph/diagrams/deployment/deployment.mmd
+    contextPath: .uigraph/diagrams/deployment/context.json

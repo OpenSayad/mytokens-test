@@ -1,0 +1,35 @@
+testCases:
+  - title: OpenCode SQLite assistant rows are normalized into usage messages
+    type: manual
+    order: 1
+    priority: p1
+    tags: [opencode, sqlite, parser]
+    stepsList:
+      - action: Provide an OpenCode SQLite database containing assistant JSON rows with tokens
+        expectedResult: The adapter reads the database read-only and selects assistant rows with token data.
+      - action: Run the default report
+        expectedResult: Model, provider, date, and token fields appear in the normalized report data.
+    expectedOutcome: Valid OpenCode assistant usage is included in the report.
+    isCritical: true
+
+  - title: Export writes an SVG or PNG overview
+    type: manual
+    order: 2
+    priority: p1
+    tags: [export, reporting]
+    stepsList:
+      - action: Run `mytokens export --output overview.svg`
+        expectedResult: An aggregated usage overview is written to the requested SVG path.
+      - action: Run `mytokens export --format png --output overview.png`
+        expectedResult: A PNG overview is written when the rendering dependency is available.
+    expectedOutcome: Export produces the requested local report format.
+
+  - title: Missing source files do not stop adapter aggregation
+    type: manual
+    order: 3
+    priority: p2
+    tags: [parsers, resilience]
+    stepsList:
+      - action: Run the CLI on a workstation with some optional source files absent
+        expectedResult: Missing sources contribute no messages and the remaining adapters continue.
+    expectedOutcome: The application completes parsing without requiring every supported source.

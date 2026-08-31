@@ -1,4 +1,4 @@
-name: UiGraph Sync
+name: UIGraph Sync
 
 on:
   push:
@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   sync:
-    name: Sync to UiGraph
+    name: Sync to UIGraph
     runs-on: ubuntu-latest
     steps:
       - name: Validating configuration

@@ -1,10 +1,49 @@
 version: 1
+
 service:
-    name: Mytokens Test
-    category: service
-    description: Mytokens Test service
-    repository:
-        provider: github
-        url: https://github.com/OpenSayad/mytokens-test
-    ownership:
-        team: Platform
+  name: Mytokens Test
+  category: service
+  description: Local CLI that parses coding-assistant usage and reports token use and estimated cost.
+  repository:
+    provider: github
+    url: https://github.com/OpenSayad/mytokens-test
+  ownership:
+    team: Platform
+
+dependencies:
+  - name: models-dev-catalog
+    service: models.dev
+    direction: downstream
+    criticality: hard
+    type: http
+    description: Fetches model metadata and pricing over HTTPS.
+
+architectureDiagrams:
+  - name: System Context
+    path: .uigraph/diagrams/system-context/system-context.mmd
+    contextPath: .uigraph/diagrams/system-context/context.json
+  - name: Component Responsibilities
+    path: .uigraph/diagrams/component-responsibilities/component-responsibilities.mmd
+    contextPath: .uigraph/diagrams/component-responsibilities/context.json
+  - name: Usage Data Flow
+    path: .uigraph/diagrams/usage-data-flow/usage-data-flow.mmd
+    contextPath: .uigraph/diagrams/usage-data-flow/context.json
+  - name: Local and CI Deployment
+    path: .uigraph/diagrams/deployment/deployment.mmd
+    contextPath: .uigraph/diagrams/deployment/context.json
+
+databases:
+  - name: opencode
+    dialect: sqlite
+    dbType: SQLite
+    schemaPath: .uigraph/db/opencode.sql
+
+docs:
+  - name: CLI Usage
+    path: .uigraph/docs/cli-usage.md
+    fileType: markdown
+    description: Commands, options, inputs, outputs, defaults, and paths.
+  - name: Architecture and Operations
+    path: .uigraph/docs/architecture-and-operations.md
+    fileType: markdown
+    description: Runtime boundaries, data flow, build, test, and release operations.

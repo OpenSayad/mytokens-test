@@ -1,4 +1,4 @@
-name: UiGraph GitHub Repo Import
+name: UIGraph GitHub Repo Import
 
 on:
   push:
@@ -72,7 +72,7 @@ jobs:
             echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
   sync:
-    name: Sync to UiGraph
+    name: Sync to UIGraph
     needs: onboard
     if: needs.onboard.outputs.sha != ''
     uses: ./.github/workflows/uigraph-sync.yml

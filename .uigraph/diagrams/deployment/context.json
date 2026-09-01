@@ -1,15 +1,150 @@
 {
-  "name": "Local and CI Deployment",
-  "description": "Observed package publication and UiGraph workflows plus the local runtime boundary.",
   "nodes": {
-    "developer": { "name": "Developer workstation" },
-    "package": { "name": "NPM package: mytokens" },
-    "runtime": { "name": "Local Node.js runtime" },
-    "local": { "name": "OpenCode and coding-CLI files" },
-    "models": { "name": "models.dev" },
-    "disk": { "name": "Local filesystem" },
-    "github": { "name": "GitHub repository" },
-    "ci": { "name": "GitHub Actions" },
-    "uigraph": { "name": "UiGraph Gateway" }
+    "developer": {
+      "type": "shape",
+      "name": "Developer workstation",
+      "shape": "rectangle",
+      "style": { "width": 228, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 396, "y": 158 }
+    },
+    "package": {
+      "type": "shape",
+      "name": "NPM package: mytokens",
+      "shape": "rectangle",
+      "style": { "width": 228, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 824, "y": 178 }
+    },
+    "runtime": {
+      "type": "shape",
+      "name": "Local Node.js runtime",
+      "shape": "rectangle",
+      "style": { "width": 228, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 1252, "y": 178 }
+    },
+    "ci": {
+      "type": "shape",
+      "name": "GitHub Actions",
+      "shape": "rectangle",
+      "style": { "width": 172, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 424, "y": 356 }
+    },
+    "local": {
+      "type": "shape",
+      "name": "OpenCode and coding-CLI files",
+      "shape": "rectangle",
+      "style": { "width": 292, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 1680, "y": 0 }
+    },
+    "models": {
+      "type": "shape",
+      "name": "models.dev",
+      "shape": "rectangle",
+      "style": { "width": 140, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 1756, "y": 178 }
+    },
+    "disk": {
+      "type": "shape",
+      "name": "Local filesystem",
+      "shape": "rectangle",
+      "style": { "width": 188, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 1732, "y": 356 }
+    },
+    "github": {
+      "type": "shape",
+      "name": "GitHub repository",
+      "shape": "rectangle",
+      "style": { "width": 196, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 0, "y": 356 }
+    },
+    "uigraph": {
+      "type": "shape",
+      "name": "UiGraph Gateway",
+      "shape": "rectangle",
+      "style": { "width": 180, "height": 58 },
+      "___internal": { "source": "mermaid" },
+      "___position": { "x": 1246.595339290683, "y": 460.9725224300857 }
+    }
+  },
+  "edges": {
+    "developer-package": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-left",
+      "label": "npx / npm install",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    },
+    "package-runtime": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-left",
+      "label": "runs Node.js 18+ CLI",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    },
+    "runtime-local": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-left",
+      "label": "reads user home data",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    },
+    "runtime-models": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-left",
+      "label": "HTTPS",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    },
+    "runtime-disk": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-left",
+      "label": "writes report and cache",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    },
+    "github-ci": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-left",
+      "label": "push to main",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    },
+    "ci-runtime": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-bottom",
+      "label": "pnpm install / build / npm publish",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    },
+    "ci-uigraph": {
+      "type": "default",
+      "sourceHandle": "source-right",
+      "targetHandle": "target-left",
+      "label": "UiGraph sync workflow",
+      "style": { "strokeWidth": 2.5 },
+      "markerEnd": { "type": "arrowclosed" },
+      "___internal": { "source": "mermaid" }
+    }
   }
 }
